@@ -1,0 +1,161 @@
+:root{
+    --Header_Nav_Sidebar_Size: -400px;
+}
+
+@font-face {
+    font-family: ZalandoSans;
+    src: url(Font/ZalandoSans-VariableFont_wdth\,wght.ttf);
+}
+
+*{
+    font-family: ZalandoSans;
+}
+
+body{
+    margin: 0;
+    overflow-x: hidden;
+}
+
+header {
+  position: fixed;
+  background-color: white;
+  height: 10vh;
+  width: 100%;
+  overflow: hidden;
+  z-index: 10;
+}
+
+.Header_Container {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.Header_Icon
+{
+    display: block;
+    height:100%;
+    max-height: 100%;
+}
+.Header_Icon_Image {
+    height: 10vh;
+    display: block;
+}
+
+.Header_Nav_Hamburger{
+    width: auto;
+    height :30px;
+    position:relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.HamburgerBar{
+    width: 36px;
+    height: 5px;
+    background-color: black;
+    position: relative;
+
+    animation-fill-mode: forwards !important;
+    animation-duration: 0.2s !important;
+}
+
+/*TODO: GET RIGHT HEIGHT AND WIDTH*/
+#HamburgerBar_1
+{
+    top:0px;
+    transform-origin: top left;
+}
+#HamburgerBar_2
+{
+    top:7px;
+}
+#HamburgerBar_3
+{
+    top:14px;
+    transform-origin: bottom left;
+}
+
+@keyframes HamburgerBar_1Animation
+{
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(45deg);
+    }
+}
+
+@keyframes HamburgerBar_2Animation
+{
+    from {
+        transform: translateX(0%);
+    }
+    to {
+        transform: translateX(200px);
+    }
+}
+
+@keyframes HamburgerBar_3Animation
+{
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(-45deg);
+    }
+}
+
+#Hamburger_Div{
+    float:right;
+}
+
+.Header_Nav_Options{
+    position: fixed;
+    background-color: rgb(255, 255, 255);
+    /*top + height must be = 100*/
+    top:10vh;
+    height:90vh;
+    /*abs(right) and width must be the same*/
+    right: calc(var(--Header_Nav_Sidebar_Size));
+    width: calc(-1 * var(--Header_Nav_Sidebar_Size));
+
+    
+    animation-duration: 1s;
+    animation-fill-mode: forwards !important;
+    
+}
+
+@keyframes SideBarAnimation
+{     
+    0% {
+        right: var(--Header_Nav_Sidebar_Size);
+    }
+    60% {
+        right: 0px;
+        animation-timing-function: cubic-bezier(0.25, 1.5, 0.5, 1); /* overshoot */
+    }
+    80% {
+        right: -30px;
+        animation-timing-function: ease-out;
+    }
+    100% {
+        right: 0px;
+    }
+}
+
+.Header_Nav_Options_Content{
+    display: grid;
+    grid-template-columns: 100%;
+    margin-left: 2em;
+    margin-top: 2em;
+    gap: 1em;
+}
+
+.Header_Nav_Options_Content h2:hover
+{
+    font-size: 1.7em;
+    cursor: pointer;
+}
